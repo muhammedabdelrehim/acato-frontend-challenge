@@ -89,7 +89,8 @@ const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
 
 Todo.defaultProps = {
   submitButton: 'Add',
-  deleteButton: 'DELETE'
+  deleteButton: 'DELETE',
+  completed: false
 }
 
 export { Todo }
