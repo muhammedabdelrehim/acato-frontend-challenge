@@ -1,9 +1,25 @@
 import React from 'react'
 
-type Props = {}
+import { InputTypeText } from '../../styles/Todo_styles'
+import { ButtonOne } from '../../styles/Buttons_styles'
 
-const Todo = () => {
-  return <>To do list will come here</>
+type Props = {
+  submitButton?: string
+}
+
+const Todo = ({ submitButton }: Props) => {
+  return (
+    <>
+      <form onSubmit="">
+        <InputTypeText type="text" value="" onChange="" required />
+        <ButtonOne type="submit">{submitButton}</ButtonOne>
+      </form>
+    </>
+  )
+}
+
+Todo.defaultProps = {
+  submitButton: 'Add'
 }
 
 export { Todo }
