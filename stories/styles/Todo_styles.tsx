@@ -31,3 +31,5 @@ export const Row = styled.div`
     background: #eeeeee;
   }
 `
+
+export const CompletedTask = styled.div``

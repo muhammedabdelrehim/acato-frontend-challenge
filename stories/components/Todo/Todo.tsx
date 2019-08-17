@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 
-import { InputTypeText, Section, Row } from '../../styles/Todo_styles'
-import { ButtonOne, ButtonThree } from '../../styles/Buttons_styles'
+import {
+  InputTypeText,
+  Section,
+  Row,
+  CompletedTask
+} from '../../styles/Todo_styles'
+import { ButtonOne, ButtonTwo, ButtonThree } from '../../styles/Buttons_styles'
 
 type ToDoItem = {
   text: string
+  completed: boolean
 }
 
 type Props = {
@@ -13,6 +19,7 @@ type Props = {
   submitButton?: string
   deleteButton?: string
   items?: ToDoItem[]
+  completed: boolean
 }
 
 const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
@@ -26,8 +33,13 @@ const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
   }
 
   const addTodo = (text: string) => {
-    const newTodos: ToDoItem[] = [...todos, { text }]
+    const newTodos: ToDoItem[] = [...todos, { text, completed: false }]
     setTodos(newTodos)
+  }
+
+  const completedTodo = (index: number) => {
+    todos[index].completed = !todos[index].completed
+    setTodos([...todos])
   }
 
   const removeTodo = (index: number) => {
@@ -50,7 +62,21 @@ const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
       <Section>
         {todos.map((todo: Props, index: number) => (
           <Row key={index}>
-            {todo.text}
+            <CompletedTask
+              style={{ textDecoration: todo.completed ? 'line-through' : '' }}
+            >
+              {todo.text}
+            </CompletedTask>
+
+            {todo.completed ? (
+              <ButtonOne type="button" onClick={() => completedTodo(index)}>
+                V
+              </ButtonOne>
+            ) : (
+              <ButtonTwo type="button" onClick={() => completedTodo(index)}>
+                Task Completed
+              </ButtonTwo>
+            )}
             <ButtonThree onClick={() => removeTodo(index)}>
               {deleteButton}
             </ButtonThree>
