@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { InputTypeText, Section, Row } from '../../styles/Todo_styles'
-import { ButtonOne } from '../../styles/Buttons_styles'
+import { ButtonOne, ButtonThree } from '../../styles/Buttons_styles'
 
 type ToDoItem = {
   text: string
@@ -11,10 +11,11 @@ type Props = {
   text?: string
   newValue?: string
   submitButton?: string
+  deleteButton?: string
   items?: ToDoItem[]
 }
 
-const Todo = ({ submitButton, newValue, items }: Props) => {
+const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
   const [value, setValue] = useState(newValue)
   const [todos, setTodos] = useState(items)
 
@@ -27,6 +28,11 @@ const Todo = ({ submitButton, newValue, items }: Props) => {
   const addTodo = (text: string) => {
     const newTodos: ToDoItem[] = [...todos, { text }]
     setTodos(newTodos)
+  }
+
+  const removeTodo = (index: number) => {
+    todos.splice(index, 1)
+    setTodos([...todos])
   }
 
   return (
@@ -43,7 +49,12 @@ const Todo = ({ submitButton, newValue, items }: Props) => {
 
       <Section>
         {todos.map((todo: Props, index: number) => (
-          <Row key={index}>{todo.text}</Row>
+          <Row key={index}>
+            {todo.text}
+            <ButtonThree onClick={() => removeTodo(index)}>
+              {deleteButton}
+            </ButtonThree>
+          </Row>
         ))}
       </Section>
     </>
@@ -51,7 +62,8 @@ const Todo = ({ submitButton, newValue, items }: Props) => {
 }
 
 Todo.defaultProps = {
-  submitButton: 'Add'
+  submitButton: 'Add',
+  deleteButton: 'DELETE'
 }
 
 export { Todo }
