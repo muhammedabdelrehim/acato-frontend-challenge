@@ -15,3 +15,19 @@ export const InputTypeText = styled.input`
     border: 3px solid #555;
   }
 `
+
+export const Section = styled.div`
+  margin: 20px 0;
+`
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #dddddd;
+
+  :nth-child(even) {
+    background: #eeeeee;
+  }
+`
