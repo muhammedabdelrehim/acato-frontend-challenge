@@ -1,0 +1,7 @@
+{
+  "data": [
+    { "text": "Fake data 1", "completed": false },
+    { "text": "Fake data 2", "completed": false },
+    { "text": "Fake data 3", "completed": true }
+  ]
+}
