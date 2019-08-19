@@ -38,13 +38,15 @@ const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
   }
 
   const completedTodo = (index: number) => {
-    todos[index].completed = !todos[index].completed
-    setTodos([...todos])
+    const newTodos = [...todos]
+    newTodos[index].completed = !newTodos[index].completed
+    setTodos(newTodos)
   }
 
   const removeTodo = (index: number) => {
-    todos.splice(index, 1)
-    setTodos([...todos])
+    const newTodos = [...todos]
+    newTodos.splice(index, 1)
+    setTodos(newTodos)
   }
 
   return (
