@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+
 // Evergreen added for simple styling.
 import { TextInput, Button, Icon, toaster, Tooltip } from 'evergreen-ui'
+
+// This is a possible addition to the to-do list. This does not work, but for the sake of cool idea's, this is added...
+import SpeechRecognition from 'react-speech-recognition'
 
 import { Section, Row, CompletedTask } from '../../styles/ToDo_styles'
 
@@ -22,6 +26,7 @@ type Props = {
   newTaskAdded?: string
   taskDeleted?: string
   tooltipDelete?: string
+  browserSupportsSpeechRecognition?: boolean // SpeachRecognition prop
 }
 
 const ToDo = ({
@@ -32,7 +37,8 @@ const ToDo = ({
   newTaskAdded,
   taskDeleted,
   tooltipDelete,
-  items
+  items,
+  browserSupportsSpeechRecognition // for more documentation on how this works: https://www.npmjs.com/package/react-speech-recognition
 }: Props) => {
   const [value, setValue] = useState(newValue)
   const [toDos, setToDos] = useState(items)
