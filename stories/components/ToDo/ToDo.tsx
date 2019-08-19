@@ -52,7 +52,7 @@ const ToDo = ({
   }
 
   const completedToDo = (index: number) => {
-    // This whole assignment was going pretty well... until I got to this part. My code was as follow:
+    // This whole assignment was going pretty well... until I got to this part. I just have lost about 4 hours of my life at this little basic function. My code was as follow:
     // toDos[index].completed = !toDos[index].completed
     // setToDos(toDos)
 

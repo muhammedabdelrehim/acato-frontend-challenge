@@ -6,6 +6,8 @@ There are two components: 'Header' and 'To-do submitform' which are combined in 
 
 To-do list is the full standalone App.
 
+The assignment took me about a total of 8 to 12 hours.
+
 ## **Setting up the project:**
 
 ###In Terminal:
