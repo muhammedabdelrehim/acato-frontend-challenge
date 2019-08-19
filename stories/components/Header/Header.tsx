@@ -1,3 +1,6 @@
+// Even though I could have used the evergreen-ui component for this,
+// I decided to just created a small Header component for the sake of Atomic design.
+
 import React from 'react'
 import {
   HeaderOne,
