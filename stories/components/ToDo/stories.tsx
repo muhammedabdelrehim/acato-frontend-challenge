@@ -9,4 +9,4 @@ const Story = () => {
   return <ToDo items={toDoItems.data} />
 }
 
-storiesOf('Components', module).add('ToDo submitform', () => <Story />)
+storiesOf('Components', module).add('To-do submitform', () => <Story />)
