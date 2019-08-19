@@ -10,7 +10,7 @@ The assignment took me about a total of 8 to 12 hours.
 
 ## **Setting up the project:**
 
-###In Terminal:
+### In Terminal:
 
 > git clone git@github.com:muhammedabdelrehim/acato-frontend-challenge.git
 
