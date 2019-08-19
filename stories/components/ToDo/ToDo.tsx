@@ -6,7 +6,7 @@ import { TextInput, Button, Icon, toaster, Tooltip } from 'evergreen-ui'
 // This is a possible addition to the to-do list. This does not work, but for the sake of cool idea's, this is added...
 import SpeechRecognition from 'react-speech-recognition'
 
-import { Section, Row, CompletedTask } from '../../styles/ToDo_styles'
+import { Section, Row, ElementWrap, ButtonWrap } from '../../styles/ToDo_styles'
 
 // The To do items which are mapped, are added to a type, which are then introduced into type Props under the prop items? : ToDoItems[] to collect the props.
 type ToDoItem = {
@@ -105,21 +105,22 @@ const ToDo = ({
       <Section>
         {toDos.map((toDo: Props, index: number) => (
           <Row key={index}>
-            <CompletedTask
+            <ElementWrap
               style={{ textDecoration: toDo.completed ? 'line-through' : '' }}
             >
               {toDo.text}
-            </CompletedTask>
-
-            <Button
-              appearance="minimum"
-              intent={toDo.completed ? 'warning' : 'success'}
-              height={40}
-              type="button"
-              onClick={() => completedToDo(index)}
-            >
-              {toDo.completed ? 'Task Completed' : <Icon icon="tick" />}
-            </Button>
+            </ElementWrap>
+            <ButtonWrap>
+              <Button
+                appearance="minimum"
+                intent={toDo.completed ? 'warning' : 'success'}
+                height={40}
+                type="button"
+                onClick={() => completedToDo(index)}
+              >
+                {toDo.completed ? 'Task Completed' : <Icon icon="tick" />}
+              </Button>
+            </ButtonWrap>
             <Tooltip content={tooltipDelete}>
               <Button
                 appearance="primary"

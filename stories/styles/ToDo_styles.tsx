@@ -17,4 +17,12 @@ export const Row = styled.div`
   }
 `
 
-export const CompletedTask = styled.div``
+export const ElementWrap = styled.div`
+  width: 33.3%;
+`
+
+export const ButtonWrap = styled.div`
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+`
