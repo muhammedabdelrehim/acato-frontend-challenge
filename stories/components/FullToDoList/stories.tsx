@@ -3,18 +3,18 @@ import { storiesOf } from '@storybook/react'
 
 import { H1Header } from '../Header'
 import { Line } from '../../styles/Line_styles'
-import { Todo } from '../Todo'
+import { ToDo } from '../ToDo'
 
-const todoItems = require('../../data/todoItems.json')
+const toDoItems = require('../../data/toDoItems.json')
 
 const Story = () => {
   return (
     <>
-      <H1Header>Todo list</H1Header>
+      <H1Header>To-Do list</H1Header>
       <Line />
-      <Todo items={todoItems.data} />
+      <ToDo items={toDoItems.data} />
     </>
   )
 }
 
-storiesOf('Todo List', module).add('Todo list', () => <Story />)
+storiesOf('ToDo List', module).add('ToDo list', () => <Story />)

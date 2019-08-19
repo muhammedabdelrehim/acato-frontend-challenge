@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TextInput, Button, Icon, toaster, Tooltip } from 'evergreen-ui'
 
-import { Section, Row, CompletedTask } from '../../styles/Todo_styles'
+import { Section, Row, CompletedTask } from '../../styles/ToDo_styles'
 
 type ToDoItem = {
   text: string
@@ -21,7 +21,7 @@ type Props = {
   tooltipDelete?: string
 }
 
-const Todo = ({
+const ToDo = ({
   submitButton,
   deleteButton,
   newValue,
@@ -32,32 +32,32 @@ const Todo = ({
   items
 }: Props) => {
   const [value, setValue] = useState(newValue)
-  const [todos, setTodos] = useState(items)
+  const [toDos, setToDos] = useState(items)
 
   const handleSubmit = e => {
     e.preventDefault()
-    addTodo(value)
+    addToDo(value)
     setValue('')
   }
 
-  const addTodo = (text: string) => {
-    const newTodos: ToDoItem[] = [...todos, { text, completed: false }]
-    setTodos(newTodos)
+  const addToDo = (text: string) => {
+    const newToDos: ToDoItem[] = [...toDos, { text, completed: false }]
+    setToDos(newToDos)
     toaster.success(newTaskAdded, {
       duration: 2
     })
   }
 
-  const completedTodo = (index: number) => {
-    const newTodos = [...todos]
-    newTodos[index].completed = !newTodos[index].completed
-    setTodos(newTodos)
+  const completedToDo = (index: number) => {
+    const newToDos = [...toDos]
+    newToDos[index].completed = !newToDos[index].completed
+    setToDos(newToDos)
   }
 
-  const removeTodo = (index: number) => {
-    const newTodos = [...todos]
-    newTodos.splice(index, 1)
-    setTodos(newTodos)
+  const removeToDo = (index: number) => {
+    const newToDos = [...toDos]
+    newToDos.splice(index, 1)
+    setToDos(newToDos)
     toaster.danger(taskDeleted, {
       duration: 2
     })
@@ -89,22 +89,22 @@ const Todo = ({
       </form>
 
       <Section>
-        {todos.map((todo: Props, index: number) => (
+        {toDos.map((toDo: Props, index: number) => (
           <Row key={index}>
             <CompletedTask
-              style={{ textDecoration: todo.completed ? 'line-through' : '' }}
+              style={{ textDecoration: toDo.completed ? 'line-through' : '' }}
             >
-              {todo.text}
+              {toDo.text}
             </CompletedTask>
 
             <Button
               appearance="minimum"
-              intent={todo.completed ? 'warning' : 'success'}
+              intent={toDo.completed ? 'warning' : 'success'}
               height={40}
               type="button"
-              onClick={() => completedTodo(index)}
+              onClick={() => completedToDo(index)}
             >
-              {todo.completed ? 'Task Completed' : <Icon icon="tick" />}
+              {toDo.completed ? 'Task Completed' : <Icon icon="tick" />}
             </Button>
             <Tooltip content={tooltipDelete}>
               <Button
@@ -112,7 +112,7 @@ const Todo = ({
                 intent="danger"
                 iconBefore="cross"
                 height={40}
-                onClick={() => removeTodo(index)}
+                onClick={() => removeToDo(index)}
               >
                 {deleteButton}
               </Button>
@@ -124,7 +124,7 @@ const Todo = ({
   )
 }
 
-Todo.defaultProps = {
+ToDo.defaultProps = {
   submitButton: 'ADD',
   deleteButton: 'DELETE',
   addTask: 'Add a task...',
@@ -134,4 +134,4 @@ Todo.defaultProps = {
   completed: false
 }
 
-export { Todo }
+export { ToDo }
