@@ -17,4 +17,4 @@ const Story = () => {
   )
 }
 
-storiesOf('ToDo List', module).add('ToDo list', () => <Story />)
+storiesOf('To-do List', module).add('To-do list', () => <Story />)
