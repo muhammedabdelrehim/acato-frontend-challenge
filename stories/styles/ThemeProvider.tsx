@@ -20,8 +20,7 @@ const defaultTheme = {
 
   fontWeights: {
     normal: 300,
-    bold: 600,
-    extraBold: 700
+    bold: 600
   },
 
   fontColor: {
@@ -32,11 +31,11 @@ const defaultTheme = {
   },
 
   identityColors: {
-    one: '#B13D25',
-    two: '#C2A179',
-    three: '#77665C',
-    four: '#14131A',
-    five: '#375264'
+    one: '#77cc6d',
+    two: '#2ac4ea',
+    three: '#f6653c',
+    four: '#dddddd',
+    five: '#eeeeee'
   },
 
   gutters: {
