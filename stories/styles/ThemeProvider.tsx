@@ -33,7 +33,9 @@ const defaultTheme = {
   identityColors: {
     one: '#77cc6d',
     two: '#2ac4ea',
-    three: '#f6653c'
+    three: '#f6653c',
+    four: '#dddddd',
+    five: '#eeeeee'
   },
 
   gutters: {

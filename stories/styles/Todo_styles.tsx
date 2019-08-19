@@ -1,34 +1,19 @@
 import styled from 'styled-components'
-
-export const InputTypeText = styled.input`
-  border: none;
-  border: 3px solid #3cbc8d;
-  color: white;
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-
-  &:focus {
-    outline: none;
-    background: #3cbc8d;
-    border: 3px solid #555;
-  }
-`
+import { theme } from './ThemeProvider'
 
 export const Section = styled.div`
-  margin: 20px 0;
+  margin: ${theme.gutters.large} 0;
 `
 
 export const Row = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border: 1px solid #dddddd;
+  padding: ${theme.gutters.small};
+  border: 1px solid ${theme.identityColors.four};
 
   :nth-child(even) {
-    background: #eeeeee;
+    background: ${theme.identityColors.five};
   }
 `
 

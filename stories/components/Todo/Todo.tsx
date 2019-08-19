@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
+import { TextInput, Button, Icon, toaster, Tooltip } from 'evergreen-ui'
 
-import {
-  InputTypeText,
-  Section,
-  Row,
-  CompletedTask
-} from '../../styles/Todo_styles'
-import { ButtonOne, ButtonTwo, ButtonThree } from '../../styles/Buttons_styles'
+import { Section, Row, CompletedTask } from '../../styles/Todo_styles'
 
 type ToDoItem = {
   text: string
@@ -20,9 +15,22 @@ type Props = {
   deleteButton?: string
   items?: ToDoItem[]
   completed: boolean
+  addTask?: string
+  newTaskAdded?: string
+  taskDeleted?: string
+  tooltipDelete?: string
 }
 
-const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
+const Todo = ({
+  submitButton,
+  deleteButton,
+  newValue,
+  addTask,
+  newTaskAdded,
+  taskDeleted,
+  tooltipDelete,
+  items
+}: Props) => {
   const [value, setValue] = useState(newValue)
   const [todos, setTodos] = useState(items)
 
@@ -35,6 +43,9 @@ const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
   const addTodo = (text: string) => {
     const newTodos: ToDoItem[] = [...todos, { text, completed: false }]
     setTodos(newTodos)
+    toaster.success(newTaskAdded, {
+      duration: 2
+    })
   }
 
   const completedTodo = (index: number) => {
@@ -47,18 +58,34 @@ const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
     const newTodos = [...todos]
     newTodos.splice(index, 1)
     setTodos(newTodos)
+    toaster.danger(taskDeleted, {
+      duration: 2
+    })
   }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <InputTypeText
+        <TextInput
+          height={40}
+          marginRight={15}
+          placeholder={addTask}
           type="text"
           value={value}
           onChange={e => setValue(e.target.value)}
+          isInvalid={false}
           required
+          validationMessage="This field is required"
         />
-        <ButtonOne type="submit">{submitButton}</ButtonOne>
+        <Button
+          type="submit"
+          appearance="primary"
+          intent="success"
+          height={40}
+          iconBefore="plus"
+        >
+          {submitButton}
+        </Button>
       </form>
 
       <Section>
@@ -70,18 +97,26 @@ const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
               {todo.text}
             </CompletedTask>
 
-            {todo.completed ? (
-              <ButtonOne type="button" onClick={() => completedTodo(index)}>
-                V
-              </ButtonOne>
-            ) : (
-              <ButtonTwo type="button" onClick={() => completedTodo(index)}>
-                Task Completed
-              </ButtonTwo>
-            )}
-            <ButtonThree onClick={() => removeTodo(index)}>
-              {deleteButton}
-            </ButtonThree>
+            <Button
+              appearance="minimum"
+              intent={todo.completed ? 'warning' : 'success'}
+              height={40}
+              type="button"
+              onClick={() => completedTodo(index)}
+            >
+              {todo.completed ? 'Task Completed' : <Icon icon="tick" />}
+            </Button>
+            <Tooltip content={tooltipDelete}>
+              <Button
+                appearance="primary"
+                intent="danger"
+                iconBefore="cross"
+                height={40}
+                onClick={() => removeTodo(index)}
+              >
+                {deleteButton}
+              </Button>
+            </Tooltip>
           </Row>
         ))}
       </Section>
@@ -90,8 +125,12 @@ const Todo = ({ submitButton, deleteButton, newValue, items }: Props) => {
 }
 
 Todo.defaultProps = {
-  submitButton: 'Add',
+  submitButton: 'ADD',
   deleteButton: 'DELETE',
+  addTask: 'Add a task...',
+  newTaskAdded: 'New task added!',
+  taskDeleted: 'A task was deleted!',
+  tooltipDelete: 'Careful now...',
   completed: false
 }
 
