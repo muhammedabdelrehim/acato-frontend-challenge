@@ -1,15 +1,17 @@
 import styled from 'styled-components'
+import { theme } from './ThemeProvider'
 
 const Button = styled.button`
   border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  margin-right: 15px;
-  display: flex;
-  font-size: 16px;
-  opacity: 0.7;
+  border-radius: 3px;
+  padding: ${theme.gutters.small} ${theme.gutters.medium};
+  font-size: ${theme.fontSizes.paragraph};
+  letter-spacing: 2px;
+  color: ${theme.fontColor.two};
+  box-shadow: 0 -2px rgba(0, 0, 0, 0.1) inset;
+  opacity: 0.75;
+  font-family: ${theme.fontFamily};
+  text-transform: uppercase;
 
   &:hover {
     opacity: 1;
@@ -18,15 +20,15 @@ const Button = styled.button`
 `
 
 export const ButtonOne = styled(Button)`
-  background-color: #4caf50;
+  background-color: ${theme.identityColors.one};
 `
 
 export const ButtonTwo = styled(Button)`
-  background-color: orange;
+  background-color: ${theme.identityColors.two};
 `
 
 export const ButtonThree = styled(Button)`
-  background-color: red;
-  font-weight: bold;
-  padding: 10px;
+  background-color: ${theme.identityColors.three};
+  font-weight: ${theme.fontWeights.bold};
+  padding: ${theme.gutters.small};
 `
