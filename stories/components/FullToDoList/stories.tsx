@@ -5,6 +5,7 @@ import { H1Header } from '../Header'
 import { Line } from '../../styles/Line_styles'
 import { ToDo } from '../ToDo'
 
+// This is fake data added for the sake of the assignment. Imagine this to be the end-point.
 const toDoItems = require('../../data/toDoItems.json')
 
 const Story = () => {

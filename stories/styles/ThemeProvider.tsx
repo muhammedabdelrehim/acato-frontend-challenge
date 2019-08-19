@@ -1,4 +1,4 @@
-// Default theme
+// Default theme. A single theme is added and exported as Theme. If in the future the To-do list needs a different design, a new Theme can be added besides defaultTheme.
 const defaultTheme = {
   fontFamily: '"Open Sans", Calibri, Helvetica, Tahoma, sans-serif',
 

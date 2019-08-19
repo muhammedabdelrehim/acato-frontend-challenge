@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
+// Evergreen added for simple styling.
 import { TextInput, Button, Icon, toaster, Tooltip } from 'evergreen-ui'
 
 import { Section, Row, CompletedTask } from '../../styles/ToDo_styles'
 
+// The To do items which are mapped, are added to a type, which are then introduced into type Props under the prop items? : ToDoItems[] to collect the props.
 type ToDoItem = {
   text: string
   completed: boolean
 }
 
+// All Props.
 type Props = {
   text?: string
   newValue?: string
   submitButton?: string
   deleteButton?: string
-  items?: ToDoItem[]
+  items?: ToDoItem[] // the combined collection of ToDoItems.
   completed: boolean
   addTask?: string
   newTaskAdded?: string
@@ -49,6 +52,11 @@ const ToDo = ({
   }
 
   const completedToDo = (index: number) => {
+    // This whole assignment was going pretty well... until I got to this part. My code was as follow:
+    // toDos[index].completed = !toDos[index].completed
+    // setToDos(toDos)
+
+    // What I had overlooked was the fact that toDos needed to be a copy of the version before, hence why I changed the above code to what you see now, which solved the problem like a charm.
     const newToDos = [...toDos]
     newToDos[index].completed = !newToDos[index].completed
     setToDos(newToDos)
@@ -124,6 +132,7 @@ const ToDo = ({
   )
 }
 
+// These are the default Props as a fallback if no props are added to the Story.
 ToDo.defaultProps = {
   submitButton: 'ADD',
   deleteButton: 'DELETE',
